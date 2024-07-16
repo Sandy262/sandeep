@@ -4,6 +4,7 @@ import './index.css';
 import Home from './home';
 import Aboutus from './Aboutus';
 import App from './App';
+import ABCD from './ABCD';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
 import { createBrowserRouter,RouterProvider } from "react-router-dom"
@@ -35,7 +36,11 @@ const router=createBrowserRouter([
                 },
             {
                 path:"/add/:a/:b",
-                element:<h3>Parameterized routing</h3>
+                element:<ABCD></ABCD>
+            },
+            {
+                path:"/add/*",
+                element:<h3>Edo okati</h3>
             }
         ]
     },

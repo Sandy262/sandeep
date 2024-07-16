@@ -11,7 +11,7 @@ function App() {
       {/* <Aboutus></Aboutus> */}
       <a href="/home">Home</a>
       <br />
-      <Link to="/Aboutus">About us</Link>
+      <Link to="/Aboutus" state={{likes:"chicken"}}>About us</Link>
       <Outlet></Outlet>
     </div>
   );
