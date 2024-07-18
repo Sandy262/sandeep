@@ -16,7 +16,9 @@ function App() {
       <Link to="/Aboutus" state={{likes:"chicken"}}>About us</Link>
       <Outlet></Outlet>
       <MyForm></MyForm>
-      <Gender></Gender>
+      {
+        //<Gender></Gender>
+      }
     </div>
   );
 }
