@@ -13,6 +13,11 @@ function ABCD(){
             setQueryParams((prev)=>{return[...prev,+a]})
         })
     },[query])
+    // useEffect(()=>{
+    //     query.forEach(function(a){
+    //         setQueryParams((queryParams)=>{return[...queryParams,+a]})
+    //     })
+    // },[query])
     useEffect(()=>{
         query.entries(function(a){console.log(a)})
         var ent=query.entries()
@@ -29,7 +34,11 @@ function ABCD(){
         //<div>Parametrized Routing{(+params.a)+(+params.b)}</div>
         <div className="border m-2 p-2">
             <h1>Parametrized Routing{(Number(params.a))+(Number(params.b))}</h1>
-            <h1>Query Params Addition:{queryParams.toString()}</h1>{
+            <h1>Query Params Addition:{queryParams.toString()}</h1>
+            {
+            //asynchronous
+            }
+            {
             queryParams.length>0&&(<h1>Query Params Addition:{queryParams.reduce((a,b)=>a+b)}</h1>)
             }
             </div>
