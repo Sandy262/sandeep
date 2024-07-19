@@ -1,1 +1,4 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.rtl.min.css');
+.danger-outline{
+    outline: 10px solid red;
+}
