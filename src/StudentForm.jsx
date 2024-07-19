@@ -9,6 +9,11 @@ function StudentForm() {
         },
         validationSchema:Yup.object({
             firstName:Yup.string().required("Baby ee first name is mandatory")
+            .min(4,"chinna perlu vaddu")
+            .matches(/^[a-zA-Z0-9]+$/,"Konchem chusko")
+            .test("name_idi", "custom message idi", (value)=>{
+                return value.length>10?false:true
+            })
         }),
         onSubmit:(values)=>{console.log(values)}
     })
@@ -16,10 +21,15 @@ return (
     <div className='border border-2 p-2 m-2'> 
         <h2>StudentForm</h2>
         <form onSubmit={sForm.handleSubmit}>
-        <input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} name='firstName' onChange={sForm.handleChange} onBlur={sForm.handleBlur}/>
+            {
+        //<input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} name='firstName' onChange={sForm.handleChange} onBlur={sForm.handleBlur}/>
+            }
+        <input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} {...sForm.getFieldProps('firstName')}/>
         <br />
         {
-            sForm.touched.firstName&&sForm.errors.firstName&&<div>Please enter firstName</div>
+            sForm.touched.firstName&&sForm.errors.firstName&&<div>{
+                //Please enter firstName
+                }{sForm.errors.firstName}</div>
         }
         <input type="text" name='lastName' onChange={sForm.handleChange}/>
         <br />
