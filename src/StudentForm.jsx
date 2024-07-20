@@ -1,53 +1,68 @@
 import React from 'react'
-import { useFormik } from 'formik'
+import { ErrorMessage, Field, Formik } from 'formik'
 import * as Yup from 'yup';
 
-function StudentForm() {
-    var sForm=useFormik({
-        initialValues:{
-            firstName:'', lastName:''
-        },
-        validationSchema:Yup.object({
+function StudentForm(){
+return (
+    <div className='border border-2 p-2 m-2'> 
+        
+        {/* {JSON.stringify(sForm.errors)}
+        <br />
+        {JSON.stringify(sForm)} */}
+        <Formik 
+        initialValues={{
+            firstName:'', lastName:'', fullName:''
+        }}
+        validationSchema={Yup.object({
             firstName:Yup.string().required("Baby ee first name is mandatory")
             .min(4,"chinna perlu vaddu")
             .matches(/^[a-zA-Z0-9]+$/,"Konchem chusko")
             .test("name_idi", "custom message idi", (value)=>{
                 return value.length>10?false:true
             })
-        }),
-        onSubmit:(values)=>{console.log(values)}
-    })
-return (
-    <div className='border border-2 p-2 m-2'> 
-        <h1>StudentForm</h1>
-        <form onSubmit={sForm.handleSubmit}>
-            <h4>Gender :</h4>
-            <input type='radio' {...sForm.getFieldProps('gender')} value='male' /> Male<br />
-            <input type='radio' {...sForm.getFieldProps('gender')} value='female' /> Female<br />
-            <input type='radio' {...sForm.getFieldProps('gender')} value='others' /> Others<br />
-            <h4>Technologies to opt for :</h4>
-            <input type='checkbox' {...sForm.getFieldHelpers('Tech')} value='Javascript' /> Javascript<br />
-            <input type='checkbox' {...sForm.getFieldHelpers('Tech')} value='React.js' /> React.js<br />
-            <input type='checkbox' {...sForm.getFieldHelpers('Tech')} value='Angularjs' /> Angularjs<br />
-            <input type='checkbox' {...sForm.getFieldHelpers('Tech')} value='Redux' /> Redux<br />
-            <input type='checkbox' {...sForm.getFieldHelpers('Tech')} value='Nodejs' /> Nodejs<br />
-            {
-        //<input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} name='firstName' onChange={sForm.handleChange} onBlur={sForm.handleBlur}/>
-            }
-        <input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} {...sForm.getFieldProps('firstName')}/>
-        <br />
+        })}
+        onSubmit={(values)=>{console.log(values)}}
+        >
         {
-            sForm.touched.firstName&&sForm.errors.firstName&&<div>{
-                //Please enter firstName
-                }{sForm.errors.firstName}</div>
-        }
-        <input type="text" name='lastName' onChange={sForm.handleChange}/>
-        <br />
-        <button>Save Student</button>
-        </form>
-        {/* {JSON.stringify(sForm.errors)}
-        <br />
-        {JSON.stringify(sForm)} */}
+        (sForm)=>{
+        return (
+            <div className='border border-2 m-2 p-2'>
+            <h1>StudentForm</h1>
+            <form onSubmit={sForm.handleSubmit}>
+                <h4>Gender :</h4>
+                <input type='radio' {...sForm.getFieldProps('gender')} value='male' /> Male<br />
+                <input type='radio' {...sForm.getFieldProps('gender')} value='female' /> Female<br />
+                <input type='radio' {...sForm.getFieldProps('gender')} value='others' /> Others<br />
+                <h4>Technologies to opt for :</h4>
+                <input type='checkbox' {...sForm.getFieldProps('Tech')} value='Javascript' /> Javascript<br />
+                <input type='checkbox' {...sForm.getFieldProps('Tech')} value='React.js' /> React.js<br />
+                <input type='checkbox' {...sForm.getFieldProps('Tech')} value='Angularjs' /> Angularjs<br />
+                <input type='checkbox' {...sForm.getFieldProps('Tech')} value='Redux' /> Redux<br />
+                <input type='checkbox' {...sForm.getFieldProps('Tech')} value='Nodejs' /> Nodejs<br />
+                {
+            //<input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} name='firstName' onChange={sForm.handleChange} onBlur={sForm.handleBlur}/>
+                }
+            <Field type="text" name="fullName" placeholder="enter your full name here"></Field><br />{
+                //same firstname ki kuda ivvachu, appudu getfieldprops vaadalsina avasaram ledu
+            }
+            <Field name="firstName" placeholder="enter first name"></Field>
+            {
+                //<input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} {...sForm.getFieldProps('firstName')}/>
+            }<br />
+            {
+                // sForm.touched.firstName&&sForm.errors.firstName&&<div>{
+                //     //Please enter firstName
+                // }{sForm.errors.firstName}</div>
+            }
+            <ErrorMessage name='firstName' component='div'></ErrorMessage>
+            <input type="text" name='lastName' onChange={sForm.handleChange} placeholder='enter your last name'/>
+            <br />
+            <button>Save Student</button>
+            </form>
+            </div>
+        )}
+    }
+        </Formik>
     </div>
 )
 }
