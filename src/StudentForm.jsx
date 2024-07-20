@@ -1,6 +1,8 @@
 import React from 'react'
 import { ErrorMessage, Field, Formik } from 'formik'
 import * as Yup from 'yup';
+import FirstName from './FormControls/FirstName';
+import FullName from './FormControls/FullName';
 
 function StudentForm(){
 return (
@@ -42,19 +44,11 @@ return (
                 {
             //<input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} name='firstName' onChange={sForm.handleChange} onBlur={sForm.handleBlur}/>
                 }
-            <Field type="text" name="fullName" placeholder="enter your full name here"></Field><br />{
+            {
                 //same firstname ki kuda ivvachu, appudu getfieldprops vaadalsina avasaram ledu
             }
-            <Field name="firstName" placeholder="enter first name"></Field>
-            {
-                //<input type="text" className={sForm.touched.firstName&&sForm.errors.firstName&& "border border-5 border-danger danger-outline"} {...sForm.getFieldProps('firstName')}/>
-            }<br />
-            {
-                // sForm.touched.firstName&&sForm.errors.firstName&&<div>{
-                //     //Please enter firstName
-                // }{sForm.errors.firstName}</div>
-            }
-            <ErrorMessage name='firstName' component='div'></ErrorMessage>
+            <FullName></FullName>
+            <FirstName></FirstName>
             <input type="text" name='lastName' onChange={sForm.handleChange} placeholder='enter your last name'/>
             <br />
             <button>Save Student</button>
