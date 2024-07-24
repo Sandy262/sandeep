@@ -4,13 +4,19 @@ function counter(props) {
     console.log(props)
 return (
     <div className="border border-2 m-2 p-2">
-    <h2>Counter:{props.counterR.count}</h2>
-    <button onClick={()=>{props.dispatch({type:'INC'})}}>Increment</button>
+    <h2>Counter:{props.count}</h2>
+    <button onClick={()=>{props.increment()}}>Increment</button>
+    <button onClick={()=>{props.decrement()}}>Decrement</button>
     </div>
 )
 }
-
-export default connect(function(store){return store})(counter)
-{
-    //ikkada direct gaa connect(store==>store) gaa kuda pass cheyyochu
+function mapStateToProps(state){
+    return state.counterR
 }
+function mapDispatchToProps(dispatch){
+    return{
+        increment:()=>{dispatch({type:'INC'})},
+        decrement:()=>{dispatch({type:'DEC'})},
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(counter)

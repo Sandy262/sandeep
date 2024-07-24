@@ -6,10 +6,10 @@ return (
     <div className='border border-2 m-2 p-2'>
     <h1>TodoList</h1>
     <input type='text' id='d1'/>
-    <button onClick={()=>{props.dispatch({type:'ADD_TODO',payload:document.getElementById('d1').value})}}>Add Todo</button>
+    <button onClick={()=>{props.addTodoItem(document.getElementById('d1').value)}}>Add Todo</button>
     <ul>
         {
-            props.todoListR.todos.map((t)=>{
+            props.todos.map((t)=>{
                 return <li>{t}</li>
             })
         }
@@ -17,5 +17,12 @@ return (
     </div>
 )
 }
-
-export default connect(store=>store)(TodoList)
+function mapStateToProps(state){
+return state.todoListR
+}
+function mapDispatchToProps(dispatch){
+return {
+    addTodoItem:(nt)=>{dispatch({type:'ADD_TODO',payload:nt})}
+}
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TodoList)
