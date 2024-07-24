@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { decAction, incAction } from './store/action'
 function counter(props) {
     console.log(props)
 return (
@@ -15,8 +16,8 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
     return{
-        increment:()=>{dispatch({type:'INC'})},
-        decrement:()=>{dispatch({type:'DEC'})},
+        increment:()=>{dispatch({incAction})},
+        decrement:()=>{dispatch({decAction})},
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(counter)
