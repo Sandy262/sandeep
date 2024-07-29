@@ -1,17 +1,24 @@
 import React from 'react'
-import { useGetAllCountriesQuery } from '../../services/countriesapi'
+import { useState } from 'react'
+import { useGetAllCountriesQuery, useLazyGetAllCountriesQuery } from '../../services/countriesapi'
 
 function Countries() {
-    var { isLoading,data }=useGetAllCountriesQuery();
-    
+    //var { isLoading,data }=useGetAllCountriesQuery();
+    var [getAllCountriesFn,{isLoading}]= useLazyGetAllCountriesQuery()
+    var [countries,setCountries]=useState([])
+    function abc(){
+        getAllCountriesFn().then(({data})=>{
+            setCountries(data)
+        })
+    }
     //console.log(x)//x anedi oka object, anduke above daanilo destructure cheddaam, manaki kavalsinavi thiskundaam 
 return (
     <div className='border border-2 m-2 p-2'>
     <h1>Countries</h1>
-    
+    <button onClick={()=>{abc()}}>Countries Chupinchu</button>
     <ul>
     {
-        isLoading===false&&data.map((c)=>{
+        isLoading===false&&countries.map((c)=>{
             return <li>{c.name.common}</li>
         })
     }
