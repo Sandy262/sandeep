@@ -4,13 +4,11 @@ import { useGetAllCountriesQuery, useLazyGetAllCountriesQuery } from '../../serv
 
 function Countries() {
     //var { isLoading,data }=useGetAllCountriesQuery();
-    var [getAllCountriesFn,{isLoading}]= useLazyGetAllCountriesQuery()
-    var [countries,setCountries]=useState([])
+    var [getAllCountriesFn,{isLoading,data}]= useLazyGetAllCountriesQuery()
     function abc(){
-        getAllCountriesFn().then(({data})=>{
-            setCountries(data)
-        })
-    }
+        getAllCountriesFn()
+        }
+    
     //console.log(x)//x anedi oka object, anduke above daanilo destructure cheddaam, manaki kavalsinavi thiskundaam 
 return (
     <div className='border border-2 m-2 p-2'>
@@ -18,7 +16,7 @@ return (
     <button onClick={()=>{abc()}}>Countries Chupinchu</button>
     <ul>
     {
-        isLoading===false&&countries.map((c)=>{
+        isLoading===false&&data?.map((c)=>{
             return <li>{c.name.common}</li>
         })
     }
