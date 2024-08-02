@@ -3,49 +3,27 @@
     {
       "id": 1,
       "title": "json-server",
-      "author": "typicodefff"
+      "author": "typicode"
     },
     {
-      "title": "ReactJS is great anthe",
+      "title": "ReactJS is great",
       "Author": "Sanjay Kumar",
-      "id": 4,
-      "author": "nenera rasindi na istam"
+      "id": 4
     },
     {
       "title": "JavaScript is great",
       "Author": "Sandeep Kumar Samala",
-      "id": 5,
-      "author": "grn"
+      "id": 5
     },
     {
       "title": "javascript vi details",
-      "author": "venky kudumularenu",
+      "author": "venky",
       "id": 9
     },
     {
       "title": "endi sami ni lolli",
       "author": "naa istam",
       "id": 10
-    },
-    {
-      "title": "javascript vi details",
-      "author": "venky kudumularen",
-      "id": 11
-    },
-    {
-      "title": "na saavu nen chasthaa",
-      "author": "sandeep",
-      "id": 12
-    },
-    {
-      "title": "endo emo",
-      "author": "Jevvayya",
-      "id": 13
-    },
-    {
-      "title": "aalu endi ni katha",
-      "author": "samrajyam",
-      "id": 14
     }
   ],
   "comments": [
