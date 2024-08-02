@@ -24,10 +24,19 @@ export const postsApi = createApi({
                 method:"DELETE"
             }
         }
+    }),
+    updatePost:builder.mutation({
+        query:(uPost)=>{
+            return{
+                url:`/${uPost.id}`,
+                method:'PUT',
+                body:uPost
+            }
+        }
     })
     })
 })
 
   // Export hooks for usage in functional components, which are
   // auto-generated based on the defined endpoints
-export const { useGetAllPostsQuery,useAddNewPostMutation,useLazyGetAllPostsQuery,useDeletePostMutation } = postsApi//endpoint starting letter matram capital undaali, adi ikkada 'G', and next Query ani add cheyyaali
+export const { useGetAllPostsQuery,useAddNewPostMutation,useLazyGetAllPostsQuery,useDeletePostMutation,useUpdatePostMutation } = postsApi//endpoint starting letter matram capital undaali, adi ikkada 'G', and next Query ani add cheyyaali
