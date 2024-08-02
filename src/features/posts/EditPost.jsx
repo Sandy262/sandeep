@@ -27,7 +27,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
         // postForm.setFieldValue("title",state.title)
         // postForm.setFieldValue("author",state.author)
         // postForm.setFieldValue("id",state.id)
-    },[state])
+    },[state])//{state update ainappudu idi call avuthundi}
     return (
         <div>
             <h1>Edit Post</h1>
